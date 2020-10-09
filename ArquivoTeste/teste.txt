@@ -1,0 +1,48 @@
+int main() {
+    int x,y,z;
+
+    float h;int c;float w,k,g;
+    
+/*
+    char t = '';
+    char j = 'csd
+    char d = 'ffg';
+    char r ';
+
+    
+    9490000000000.
+
+    k = x;
+    w = 5/x+y*8+5* 7;
+    /** /** /*
+       teste &% 
+    ***
+    
+    !rgedf
+     
+    do{
+	
+        w = w + 1.;
+	
+    }while  (y<10);
+
+
+    y = x;
+    
+    while (x>w*8) {
+       float y,a;
+        w = w +1;
+        y = x;
+    }
+
+    a = 0;
+
+    if (w != x) 
+    {
+
+        p = 10;
+    }
+    $
+*/
+
+}
