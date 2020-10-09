@@ -3,7 +3,8 @@
 
     Observação 1: Imprimir apenas Mensagens de erro.
 
-    Observação 2: A mensagem deve ser clara e específica de erro, sempre que for o caso, e em qualquer fase do compilador. Formato: "ERRO na linha 'n', coluna 'm', ultimo token lido 't': mensagem específica do erro"
+    Observação 2: A mensagem deve ser clara e específica de erro, sempre que for o caso, e em qualquer fase do compilador.
+      Formato: "ERRO na linha 'n', coluna 'm', ultimo token lido 't': mensagem específica do erro"
 
     Símbolos 
 
@@ -50,7 +51,8 @@
 
         Se for uma palavra reservada, operador, caracter especial ou delimitador: classificação apenas
 
-        Emitir mensagem clara e específica de erro, sempre que for o caso, e em qualquer fase do compilador. Formato: "ERRO na linha n, coluna m, ultimo token lido t: mensagem"
+        Emitir mensagem clara e específica de erro, sempre que for o caso, e em qualquer fase do compilador.
+         Formato: "ERRO na linha n, coluna m, ultimo token lido t: mensagem"
 
             Considere o TAB como equivalente a 4 colunas
     
