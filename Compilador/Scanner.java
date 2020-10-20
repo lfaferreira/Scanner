@@ -20,11 +20,12 @@ public class Scanner {
     private char LOOKAHEAD = ' ';//Buscador do proximo caracter no arquivo lido. 
     private String BUFFER = "";//Buffer responsavel pela criação dos tokens.
     private Deque<String> TOKENS = new ArrayDeque<String>();//Pilha para guardar os tokens criados.
-
-    public Scanner() {
+    private BufferedReader arquivoUsuario;
+    public Scanner(BufferedReader arquivo) {
+        arquivoUsuario = arquivo;
     }
 
-    public void scan(BufferedReader arquivoUsuario) throws FileNotFoundException, IOException { //Metodo principal da Classe Scanner. Starta todo o processo de leitura, classificação de tokens e print dos tokens para o usuario.
+    public void scan() throws FileNotFoundException, IOException { //Metodo principal da Classe Scanner. Starta todo o processo de leitura, classificação de tokens e print dos tokens para o usuario.
         TOKENS = tokenClassification(arquivoUsuario);
         printTokens();
         System.exit(0);
@@ -39,7 +40,7 @@ public class Scanner {
                 if (Character.isDigit(LOOKAHEAD) || LOOKAHEAD == '.') { //1ª seção de criação dos Tokens. Nesta seção do codigo serão criados os tokens numericos, sejam eles int ou float.
                     tokenNumericoInt(arquivoUsuario);
                 }
-                if (Character.isLetter(LOOKAHEAD)) {//2ª seleção de criação dos Tokens. Nesta seção do codigo serão criados os tokens de Identificadores, sejam eles variaveis ou palavras reservadas.
+                if (Character.isLetter(LOOKAHEAD)  || LOOKAHEAD == 95) {//2ª seleção de criação dos Tokens. Nesta seção do codigo serão criados os tokens de Identificadores, sejam eles variaveis ou palavras reservadas.
                     tokenID(arquivoUsuario);
                 }
                 if (LOOKAHEAD == 39) { //3ª seleção de criação dos Tokens. Nesta seção do codigo serão criados os tokens de Characteres. "39" é o codigo de apostrofo.
@@ -64,8 +65,7 @@ public class Scanner {
 
     private void lookAHead(BufferedReader arquivoUsuario) { //Metodo para leitura do arquivo enviado pelo usuario. A leitura é feita caracter por caracter
         try {
-            LOOKAHEAD = (char) arquivoUsuario.read();
-            int i = 0;
+            LOOKAHEAD = (char) arquivoUsuario.read();            
             localization();
         } catch (IOException ex) {
             System.err.println("Erro na leitura binaria do arquivo.");
@@ -384,12 +384,12 @@ public class Scanner {
         clearBuffer();
     }
 
-    private void characterInvalid(String mensagem) { //Metodos informativos caso haja um caracter invalido no Arquivo enviado pelo usuario. O metodo printa a linha, coluna e informa qual foi o ultimo token lido e seu tipo.
+       private void characterInvalid(String mensagem) { //Metodos informativos caso haja um caracter invalido no Arquivo enviado pelo usuario. O metodo printa a linha, coluna e informa qual foi o ultimo token lido e seu tipo.
         String token = TOKENS.pop(), tipo = TOKENS.pop();
-        System.err.println("ERRO na linha " + LINE + ", coluna " + COLUMN + ", ultimo token lido:  [Tipo = " + tipo + "],[Token = '" + token + "' ] "+mensagem);
+        System.err.println("ERRO na linha " + LINE + ", coluna " + COLUMN + ", ultimo token lido:  [Tipo = " + tipo + "],[Token = '" + token + "' ] " + mensagem);
         System.exit(0);
     }
-
+       
     private void printTokens() { //Metodo para printar todos os tokens e seus respectivos tipos.
         while (TOKENS.peek() != null) {
             if (TOKENS.peek() != null) {

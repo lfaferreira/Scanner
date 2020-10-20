@@ -24,7 +24,7 @@ public class Compilador {
     public static void main(String[] args) throws UnsupportedEncodingException, FileNotFoundException, IOException {
         // abertura do arquivo
         BufferedReader myBuffer = new BufferedReader (new InputStreamReader(
-                new FileInputStream("C:\\Users\\Lucas Fernando\\Desktop\\teste.txt"), "UTF-8"));
+                new FileInputStream("C:\\Users\\Lucas Fernando\\Desktop\\teste.txt"))); //Aqui deve ser enserido o diretorio do arquivo que será executado.
         Scanner x = new Scanner();;
         x.scan(myBuffer);
     }
